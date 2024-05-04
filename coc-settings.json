@@ -1,0 +1,11 @@
+{
+
+"languageserver": {
+  "latex": {
+    "command": "/root/.cargo/bin/texlab",
+    "ignoredRootPaths": ["~"],
+    "filetypes": ["tex", "bib", "plaintex", "context"]
+  }
+}
+
+}

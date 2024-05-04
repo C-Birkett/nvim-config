@@ -13,7 +13,6 @@ Plug 'preservim/nerdtree'
 Plug 'vimwiki/vimwiki'
 
 "language server
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'

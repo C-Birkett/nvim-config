@@ -43,4 +43,8 @@ return{
             vim.cmd.colorscheme("nord")
         end,
     },
+
+    {
+        "mhinz/vim-startify"
+    }
 }

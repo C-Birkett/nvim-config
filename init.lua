@@ -30,8 +30,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-    -- folder management
-    {'preservim/nerdtree'},
     {'vimwiki/vimwiki'},
 
     -- graphical
@@ -39,3 +37,6 @@ local plugins = {
 }
 
 require("lazy").setup("plugins")
+
+-- personal bindings
+require("macros")

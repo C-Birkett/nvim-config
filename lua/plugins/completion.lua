@@ -48,8 +48,8 @@ return {
                         item.abbr = content .. (" "):rep(max_content_width - #content)
                     end
                 return item
-            end
-            },
+                end
+                },
 
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },

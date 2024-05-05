@@ -13,9 +13,32 @@ return {
         opts = {auto_install = true},
         config = function()
             require("mason-lspconfig").setup({
-            ensure_installed = {clangd},
-            ensure_installed = {omnisharp},
-            ensure_installed = {lua_ls},
+                ensure_installed = {
+                    -- ls
+                    "clangd",
+                    "omnisharp",
+                    "lua_ls",
+                    -- lint
+                    --"cmakelint",
+                    --"pylint",
+                },
+            })
+        end
+    },
+
+    {
+        "jay-babu/mason-null-ls.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = {
+            "williamboman/mason.nvim",
+            "nvimtools/none-ls.nvim",
+        },
+        config = function()
+            require("mason-null-ls").setup({
+                ensure_installed = {
+                    -- format
+                    "stylua",
+                }
             })
         end
     },
@@ -28,17 +51,17 @@ return {
 
             require("lspconfig").clangd.setup({
                 capabilities = capabilities,
-                on_attach = on_attach
+                --on_attach = on_attach
             })
 
             require("lspconfig").omnisharp.setup({
                 capabilities = capabilities,
-                on_attach = on_attach
+                --on_attach = on_attach
             })
 
             require("lspconfig").lua_ls.setup({
                 capabilities = capabilities,
-                on_attach = on_attach,
+                --on_attach = on_attach,
                 settings = {
                     Lua = {
                         diagnostics = {

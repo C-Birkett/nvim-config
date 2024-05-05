@@ -14,26 +14,28 @@
 --noremap <silent> <C-Up> :resize -3<CR>
 --noremap <silent> <C-Down> :resize +3<CR>
 
+-- edit
+vim.keymap.set("n", "<leader>ef", vim.lsp.buf.format, {})
+
 -- find
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<C-p>", builtin.find_files, {})
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, {})
-
--- lsp
+--- lsp
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+vim.keymap.set("n", "<leader>fd", vim.lsp.buf.definition, {})
+vim.keymap.set("n", "<leader>fr", vim.lsp.buf.references, {})
+--vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 
 -- file structure
 vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
-vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {})
+--vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {})
 
 -- git
 local neogit = require("neogit")
-vim.keymap.set('n', '<leader>gg', neogit.open)
---vim.keymap.set('n', '<leader>gc', neogit.open({"commit"}))
+vim.keymap.set('n', '<leader>gg', neogit.open, {})
+--vim.keymap.set('n', '<leader>gc', neogit.open, {"commit"})
 
 local gitsigns = require("gitsigns")
 vim.keymap.set('n', '<leader>gs', gitsigns.stage_hunk)

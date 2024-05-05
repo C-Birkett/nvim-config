@@ -13,8 +13,7 @@ vim.opt.shiftwidth = 4
 
 vim.g.loaded_python_provider = 0
 vim.g.python3_host_prog = "/usr/bin/python3"
-
---require("macros")
+vim.g.mapleader = " "
 
 -- lazy package manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

@@ -32,6 +32,11 @@ vim.keymap.set("n", "<leader>fr", vim.lsp.buf.references, {})
 vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
 --vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {})
 
+-- debug
+local dap = require("dap")
+vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, {})
+vim.keymap.set('n', '<leader>dc', dap.continue, {})
+
 -- git
 local neogit = require("neogit")
 vim.keymap.set('n', '<leader>gg', neogit.open, {})

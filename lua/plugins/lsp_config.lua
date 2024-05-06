@@ -16,8 +16,9 @@ return {
                 ensure_installed = {
                     -- ls
                     "clangd",
-                    "omnisharp",
+                    "csharp_ls",
                     "lua_ls",
+                    "pyright",
                     -- lint
                     --"cmakelint",
                     --"pylint",
@@ -48,13 +49,19 @@ return {
         lazy = false,
         config = function()
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
+            local pid = vim.fn.getpid()
 
             require("lspconfig").clangd.setup({
                 capabilities = capabilities,
                 --on_attach = on_attach
             })
 
-            require("lspconfig").omnisharp.setup({
+            require("lspconfig").csharp_ls.setup({
+                capabilities = capabilities,
+                --on_attach = on_attach
+            })
+
+            require("lspconfig").pyright.setup({
                 capabilities = capabilities,
                 --on_attach = on_attach
             })

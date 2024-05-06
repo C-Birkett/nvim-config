@@ -6,7 +6,7 @@ return {
             sources = {
                 --null_ls.builtins.diagnostics.cmake_lint,
                 null_ls.builtins.diagnostics.pylint,
-                null_ls.builtins.diagnostics.stylua
+                --null_ls.builtins.diagnostics.stylua
             },
         })
     end

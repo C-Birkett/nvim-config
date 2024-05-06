@@ -1,4 +1,4 @@
--- options
+-- options & globals
 
 --- compatibility
 vim.opt.showmode = false
@@ -8,6 +8,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.syntax = "on"
 vim.opt.number = true
 vim.opt.linebreak = true
+vim.g.nord_italic = false
 
 --- tabs
 vim.opt.expandtab = true
@@ -18,8 +19,6 @@ vim.opt.smartindent = true
 --- searching
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-
--- globals
 
 --- python
 vim.g.loaded_python_provider = 0

@@ -24,9 +24,8 @@ return {
     },
 
     {
-        "gbprod/nord.nvim",
+        "shaunsingh/nord.nvim",
         config = function()
-            require("nord").setup({})
             vim.cmd.colorscheme("nord")
         end,
     },

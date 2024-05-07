@@ -22,10 +22,12 @@ vim.opt.smartcase = true
 
 --- python
 vim.g.loaded_python_provider = 0
-vim.g.python3_host_prog = "/usr/bin/python3"
 
 --- mapping
 vim.g.mapleader = " "
+
+-- machine specific defs
+require("machine_local")
 
 -- lazy package manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

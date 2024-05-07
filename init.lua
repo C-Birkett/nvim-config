@@ -9,6 +9,7 @@ vim.opt.syntax = "on"
 vim.opt.number = true
 vim.opt.linebreak = true
 vim.g.nord_italic = false
+vim.g.nord_uniform_diff_background = true
 vim.opt.cmdheight = 0
 
 --- tabs

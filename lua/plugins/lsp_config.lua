@@ -9,6 +9,9 @@ return {
 
     {
         'williamboman/mason-lspconfig.nvim',
+        dependencies = {
+            'williamboman/mason.nvim',
+        },
         lazy = false,
         opts = {auto_install = true},
         config = function()
@@ -46,6 +49,10 @@ return {
 
     {
         'neovim/nvim-lspconfig',
+        dependencies = {
+            'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
+        },
         lazy = false,
         config = function()
             local capabilities = require('cmp_nvim_lsp').default_capabilities()

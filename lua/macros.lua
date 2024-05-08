@@ -14,6 +14,12 @@
 --noremap <silent> <C-Up> :resize -3<CR>
 --noremap <silent> <C-Down> :resize +3<CR>
 
+-- window navigation
+vim.keymap.set("n", "<C-Down>", function() vim.cmd.wincmd("j") end, {})
+vim.keymap.set("n", "<C-Up>", function() vim.cmd.wincmd("k") end, {})
+vim.keymap.set("n", "<C-Left>", function() vim.cmd.wincmd("h") end, {})
+vim.keymap.set("n", "<C-Right>", function() vim.cmd.wincmd("l") end, {})
+
 -- edit
 vim.keymap.set("n", "<leader>ef", vim.lsp.buf.format, {})
 

@@ -29,6 +29,7 @@ vim.g.loaded_python_provider = 0
 vim.g.mapleader = " "
 
 -- machine specific defs
+USE_COPILOT = false
 require("machine_local")
 
 -- lazy package manager

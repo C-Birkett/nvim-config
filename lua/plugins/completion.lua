@@ -20,6 +20,16 @@ return {
             local compare = require('cmp.config.compare')
             local types = require('cmp.types')
 
+            local sources_table = {
+                { name = 'nvim_lsp' },
+                { name = 'luasnip' },
+                { name = 'buffer' },
+            }
+
+            if USE_COPILOT then
+                table.insert(sources_table, { name = 'copilot' })
+            end
+
             cmp.setup({
                 snippet = {
                     expand = function(args)
@@ -27,11 +37,7 @@ return {
                     end,
                 },
 
-                sources = cmp.config.sources({
-                    { name = 'nvim_lsp' },
-                    { name = 'luasnip' },
-                    { name = 'buffer' },
-                }),
+                sources = cmp.config.sources(sources_table),
 
                 formatting = {
                     --fields = { "abbr", "menu", "kind" },

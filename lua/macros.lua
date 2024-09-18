@@ -62,3 +62,6 @@ vim.keymap.set('n', '<leader>gtb', gitsigns.toggle_current_line_blame)
 vim.keymap.set('n', '<leader>gd', gitsigns.diffthis)
 vim.keymap.set('n', '<leader>gD', function() gitsigns.diffthis('~') end)
 vim.keymap.set('n', '<leader>gtd', gitsigns.toggle_deleted)
+
+-- toggle
+vim.keymap.set('n', '<leader>tc', function() vim.cmd("Copilot toggle") end, {})

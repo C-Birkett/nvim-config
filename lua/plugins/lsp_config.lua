@@ -16,12 +16,16 @@ return {
         opts = {auto_install = true},
         config = function()
             require("mason-lspconfig").setup({
+                pip = {
+                    upgrade_pip = true,
+                },
                 ensure_installed = {
                     -- ls
                     "clangd",
                     "csharp_ls",
                     "lua_ls",
                     "pyright",
+                    --"pylsp",
                     -- lint
                     --"cmakelint",
                     --"pylint",
@@ -56,7 +60,6 @@ return {
         lazy = false,
         config = function()
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
-            local pid = vim.fn.getpid()
 
             require("lspconfig").clangd.setup({
                 capabilities = capabilities,
@@ -71,7 +74,22 @@ return {
             require("lspconfig").pyright.setup({
                 capabilities = capabilities,
                 --on_attach = on_attach
+                python = {
+                    pythonPath = vim.g.python3_host_prog
+                }
             })
+
+            require("lspconfig").ts_ls.setup({
+                capabilities = capabilities,
+                --on_attach = on_attach
+            })
+
+            --[[
+            require("lspconfig").pylsp.setup({
+                capabilities = capabilities,
+                --on_attach = on_attach
+            })
+            ]]
 
             require("lspconfig").lua_ls.setup({
                 capabilities = capabilities,

@@ -10,7 +10,7 @@ vim.opt.number = true
 vim.opt.linebreak = true
 vim.g.nord_italic = false
 vim.g.nord_uniform_diff_background = true
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
 
 --- tabs
 vim.opt.expandtab = true
@@ -28,9 +28,15 @@ vim.g.loaded_python_provider = 0
 --- mapping
 vim.g.mapleader = " "
 
--- machine specific defs
+-- default configs
 USE_COPILOT = false
-require("machine_local")
+
+-- platform specific overrides
+if vim.loop.os_uname().sysname == "Windows_NT" then
+    require("/platform/windows")
+elseif vim.loop.os_uname().sysname == "Linux" then -- TODO get correct string
+    require("/platform/linux")
+end
 
 -- lazy package manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

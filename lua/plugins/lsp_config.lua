@@ -25,6 +25,8 @@ return {
                     "csharp_ls",
                     "lua_ls",
                     "pyright",
+                    "ts_ls",
+                    "powershell_es",
                     --"pylsp",
                     -- lint
                     --"cmakelint",
@@ -84,12 +86,13 @@ return {
                 --on_attach = on_attach
             })
 
-            --[[
-            require("lspconfig").pylsp.setup({
+            require("lspconfig").powershell_es.setup({
+                filetypes = {"ps1", "psm1", "psd1"},
+                shell = "powershell.exe",
+                bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services/",
                 capabilities = capabilities,
                 --on_attach = on_attach
             })
-            ]]
 
             require("lspconfig").lua_ls.setup({
                 capabilities = capabilities,
@@ -102,6 +105,14 @@ return {
                     }
                 }
             })
+
+            --[[
+            require("lspconfig").pylsp.setup({
+                capabilities = capabilities,
+                --on_attach = on_attach
+            })
+            ]]
+
         end
 
     },

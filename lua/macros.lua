@@ -39,14 +39,14 @@ local telescope = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", telescope.find_files, { desc = "file" })
 vim.keymap.set("n", "<leader>fg", telescope.live_grep, { desc = "grep" })
 vim.keymap.set("n", "<leader>fh", telescope.oldfiles, { desc = "history" })
-vim.keymap.set("n", "<leader>fd", vim.lsp.buf.definition, { desc = "definition" })
-vim.keymap.set("n", "<leader>fr", vim.lsp.buf.references, { desc = "references" })
+vim.keymap.set("n", "<leader>fd", telescope.lsp_definitions, { desc = "definition" })
+vim.keymap.set("n", "<leader>fr", telescope.lsp_references, { desc = "references" })
+vim.keymap.set("n", "<leader>fs", telescope.grep_string, { desc = "selection" })
+vim.keymap.set("n", "<leader>fl", telescope.resume, { desc = "last search" })
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
---vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 
 -- file structure
 vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
---vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", {})
 
 -- debug
 local dap = require("dap")
@@ -71,7 +71,7 @@ vim.keymap.set('v', '<leader>gr', function() gitsigns.reset_hunk { vim.fn.line('
 vim.keymap.set('n', '<leader>gfs', gitsigns.stage_buffer, { desc = "stage" })
 --vim.keymap.set('n', '<leader>gfs', gitsigns.undo_stage_buffer, { desc = "unstage" })
 vim.keymap.set('n', '<leader>gfr', gitsigns.reset_buffer, { desc = "reset" })
-vim.keymap.set('n', '<leader>gp', gitsigns.preview_hunk, { desc = "diff" })
+vim.keymap.set('n', '<leader>gd', gitsigns.preview_hunk, { desc = "diff line" })
 vim.keymap.set('n', '<leader>gb', function() gitsigns.blame_line { full = true } end, { desc = "blame" })
 vim.keymap.set('n', '<leader>gD', gitsigns.diffthis, { desc = "diff file" })
 --vim.keymap.set('n', '<leader>gD', function() gitsigns.diffthis('~') end, {desc = "" })

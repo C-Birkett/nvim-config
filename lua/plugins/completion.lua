@@ -37,6 +37,23 @@ return {
                     end,
                 },
 
+                -- how to sort sources
+                sorting = {
+                    comparators = {
+                      compare.offset,
+                      compare.exact,
+                      compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
+                      compare.kind,
+                      compare.sort_text,
+                      compare.length,
+                      compare.order,
+                      -- compare.locality,
+                      -- compare.scopes,
+                      -- compare.score_offset,
+                      -- compare.recently_used,
+                    },
+                },
+
                 sources = cmp.config.sources(sources_table),
 
                 formatting = {

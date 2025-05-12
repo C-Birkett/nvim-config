@@ -28,6 +28,9 @@ vim.g.loaded_python_provider = 0
 --- mapping
 vim.g.mapleader = " "
 
+--- windows
+vim.o.splitright = true
+
 -- default configs
 USE_COPILOT = false
 

@@ -23,6 +23,7 @@ wk.add({
     { "<leader>g", group = "git" },
     { "<leader>gf", group = "file" },
     { "<leader>t", group = "toggle" },
+    { "<leader>c", group = "copilot" },
 })
 
 -- window navigation
@@ -46,7 +47,7 @@ vim.keymap.set("n", "<leader>fl", telescope.resume, { desc = "last search" })
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 
 -- file structure
-vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
+vim.keymap.set("n", "<C-n>", function() vim.cmd("Neotree filesystem reveal right") end, { desc = "neo-tree"})
 
 -- debug
 local dap = require("dap")
@@ -78,5 +79,11 @@ vim.keymap.set('n', '<leader>gD', gitsigns.diffthis, { desc = "diff file" })
 --vim.keymap.set('n', '<leader>td', gitsigns.toggle_deleted, { desc = "deleted" })
 
 -- toggle
-vim.keymap.set('n', '<leader>tc', function() vim.cmd("Copilot toggle") end, { desc = "copilot" })
 vim.keymap.set('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = "blame" })
+
+-- copilot
+if USE_COPILOT then
+    vim.keymap.set('n', '<leader>ct', function() vim.cmd("Copilot toggle") end, { desc = "toggle" })
+    vim.keymap.set('n', '<leader>cc', function() vim.cmd("CopilotChat") end, { desc = "chat" })
+    vim.keymap.set('n', '<leader>cr', function() vim.cmd("CopilotChatReset") end, { desc = "reset" })
+end

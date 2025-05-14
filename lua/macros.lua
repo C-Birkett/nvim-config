@@ -1,3 +1,5 @@
+local globals = require("globals")
+
 -- assorted macros, either my own or borrowed
 
 -- date stamp
@@ -82,8 +84,9 @@ vim.keymap.set('n', '<leader>gD', gitsigns.diffthis, { desc = "diff file" })
 vim.keymap.set('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = "blame" })
 
 -- copilot
-if USE_COPILOT then
+if globals.USE_COPILOT then
     vim.keymap.set('n', '<leader>ct', function() vim.cmd("Copilot toggle") end, { desc = "toggle" })
     vim.keymap.set('n', '<leader>cc', function() vim.cmd("CopilotChat") end, { desc = "chat" })
     vim.keymap.set('n', '<leader>cr', function() vim.cmd("CopilotChatReset") end, { desc = "reset" })
+    vim.keymap.set('n', '<leader>cs', function() vim.cmd("CopilotChatStop") end, { desc = "stop" })
 end

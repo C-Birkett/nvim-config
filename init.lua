@@ -1,4 +1,13 @@
--- options & globals
+local globals = require("globals")
+
+-- platform specific configs
+if globals.IS_WINDOWS then
+    require("/platform/windows")
+elseif globals.IS_LINUX then
+    require("/platform/linux")
+end
+
+-- options
 
 --- compatibility
 vim.opt.showmode = false
@@ -30,16 +39,6 @@ vim.g.mapleader = " "
 
 --- windows
 vim.o.splitright = true
-
--- default configs
-USE_COPILOT = false
-
--- platform specific overrides
-if vim.loop.os_uname().sysname == "Windows_NT" then
-    require("/platform/windows")
-elseif vim.loop.os_uname().sysname == "Linux" then -- TODO get correct string
-    require("/platform/linux")
-end
 
 -- lazy package manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

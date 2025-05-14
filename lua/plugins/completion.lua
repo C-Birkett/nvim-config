@@ -1,3 +1,5 @@
+local globals = require("globals")
+
 return {
     {
         'hrsh7th/cmp-nvim-lsp'
@@ -26,7 +28,7 @@ return {
                 { name = 'buffer' },
             }
 
-            if USE_COPILOT then
+            if globals.USE_COPILOT then
                 table.insert(sources_table, { name = 'copilot' })
             end
 

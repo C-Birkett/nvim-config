@@ -48,8 +48,11 @@ vim.keymap.set("n", "<leader>fs", telescope.grep_string, { desc = "selection" })
 vim.keymap.set("n", "<leader>fl", telescope.resume, { desc = "last search" })
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 
--- file structure
-vim.keymap.set("n", "<C-n>", function() vim.cmd("Neotree filesystem reveal right") end, { desc = "neo-tree"})
+-- file tree
+vim.keymap.set("n", "<C-n>", function() vim.cmd("Neotree source=filesystem reveal=true toggle=true position=right") end, { desc = "neo-tree"})
+
+-- open buffers
+vim.keymap.set("n", "<leader>b", function() vim.cmd("Neotree source=buffers reveal=true toggle=true position=float") end, { desc = "buffers"})
 
 -- debug
 local dap = require("dap")
@@ -62,7 +65,7 @@ vim.keymap.set('n', '<leader>gg', neogit.open, { desc = "git" })
 vim.keymap.set('n', '<leader>gc', function() neogit.open { "commit" } end, { desc = "commit" })
 
 local gitsigns = require("gitsigns")
-vim.keymap.set('n', '<leader>gs', gitsigns.stage_hunk, { desc = "stage" })
+vim.keymap.set("n", "<leader>gs", function() vim.cmd("Neotree source=git_status toggle=true") end, { desc = "status"})
 vim.keymap.set('n', '<leader>gu', gitsigns.undo_stage_hunk, { desc = "unstage" })
 vim.keymap.set('n', '<leader>gr', gitsigns.reset_hunk, { desc = "reset" })
 vim.keymap.set('v', '<leader>gs', function() gitsigns.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
@@ -85,8 +88,28 @@ vim.keymap.set('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = "
 
 -- copilot
 if globals.USE_COPILOT then
+    -- Close and reopen neo tree to get it on rhs
+    local function is_neotree_open()
+        for _, win in ipairs(vim.api.nvim_list_wins()) do
+            local buf = vim.api.nvim_win_get_buf(win)
+            local name = vim.api.nvim_buf_get_name(buf)
+            if name:match("neo%-tree filesystem") then
+                return true
+            end
+        end
+        return false
+    end
+
+    local function open_copilot_chat()
+        local neotree_open = is_neotree_open()
+        vim.cmd("Neotree action=close source=filesystem position=right")
+        vim.cmd("CopilotChat")
+        if neotree_open then vim.cmd("Neotree action=show source=filesystem position=right") end
+    end
+
     vim.keymap.set('n', '<leader>ct', function() vim.cmd("Copilot toggle") end, { desc = "toggle" })
-    vim.keymap.set('n', '<leader>cc', function() vim.cmd("CopilotChat") end, { desc = "chat" })
+    vim.keymap.set('n', '<leader>cc', open_copilot_chat, { desc = "chat" })
+    vim.keymap.set('v', '<leader>cc', open_copilot_chat, { desc = "chat" })
     vim.keymap.set('n', '<leader>cr', function() vim.cmd("CopilotChatReset") end, { desc = "reset" })
     vim.keymap.set('n', '<leader>cs', function() vim.cmd("CopilotChatStop") end, { desc = "stop" })
 end

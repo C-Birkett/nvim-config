@@ -109,8 +109,9 @@ You will receive code snippets that include line number prefixes - use these to 
             end
         },
 
+        --[[
         {
-            "CopilotC-Nvim/CopilotChat.nvim",
+            "deathbeam/CopilotChat.nvim",
             dependencies = {
                 { "zbirenbaum/copilot.lua" },
                 { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
@@ -124,14 +125,13 @@ You will receive code snippets that include line number prefixes - use these to 
                 },
                 sticky = {
                     "/BASE",
-                    "#files",
-                    "#buffer",
                 },
                 window = {
                     layout = 'vertical',
                 },
             },
         },
+        --]]
     }
 else
     return {}

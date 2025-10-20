@@ -63,17 +63,17 @@ return {
         config = function()
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-            vim.lsp.enable('clangd', {
+            vim.lsp.config('clangd', {
                 capabilities = capabilities,
                 --on_attach = on_attach
             })
 
-            vim.lsp.enable('csharp_ls', {
+            vim.lsp.config('csharp_ls', {
                 capabilities = capabilities,
                 --on_attach = on_attach
             })
 
-            vim.lsp.enable('pyright', {
+            vim.lsp.config('pyright', {
                 capabilities = capabilities,
                 --on_attach = on_attach
                 python = {
@@ -81,12 +81,12 @@ return {
                 }
             })
 
-            vim.lsp.enable('ts_ls', {
+            vim.lsp.config('ts_ls', {
                 capabilities = capabilities,
                 --on_attach = on_attach
             })
 
-            vim.lsp.enable('powershell_es', {
+            vim.lsp.config('powershell_es', {
                 filetypes = {"ps1", "psm1", "psd1"},
                 shell = "powershell.exe",
                 bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services/",
@@ -94,13 +94,16 @@ return {
                 --on_attach = on_attach
             })
 
-            vim.lsp.enable('lua_ls', {
+            vim.lsp.config('lua_ls', {
                 capabilities = capabilities,
                 --on_attach = on_attach,
                 settings = {
                     Lua = {
                         diagnostics = {
                             globals = {"vim"}
+                        },
+                        workspace = {
+                            library = vim.api.nvim_get_runtime_file("", true),
                         }
                     }
                 }

@@ -8,7 +8,7 @@ return {
                     theme = "nord",
                     icons_enabled = true,
                 },
-                extensions = {"neo-tree", "mason", "lazy"},
+                extensions = {"neo-tree", "mason", "lazy", "avante"},
                 -- fix bad diagnostics icons
                 sections = {
                     lualine_b = {

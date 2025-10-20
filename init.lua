@@ -40,6 +40,16 @@ vim.g.mapleader = " "
 --- windows
 vim.o.splitright = true
 
+--- diagnostics
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  update_in_insert = false,
+  underline = true,
+  severity_sort = false,
+  float = true,
+})
+
 -- lazy package manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

@@ -21,6 +21,11 @@ return {
         provider = "tavily"
     }
   },
+  behaviour = {
+    auto_approve_tool_permissions = false, -- Show permission prompts for all tools
+    confirmation_ui_style = "popup", -- Optional: Choose how the prompt appears
+  },
+  mode = "legacy",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",

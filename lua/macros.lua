@@ -103,7 +103,7 @@ if globals.USE_COPILOT then
     local function open_copilot_chat()
         local neotree_open = is_neotree_open()
         vim.cmd("Neotree action=close source=filesystem position=right")
-        vim.cmd("AvanteAsk")
+        vim.cmd("AvanteChat")
         if neotree_open then vim.cmd("Neotree action=show source=filesystem position=right") end
     end
 

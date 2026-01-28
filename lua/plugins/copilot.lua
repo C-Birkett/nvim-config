@@ -95,6 +95,7 @@ You will receive code snippets that include line number prefixes - use these to 
                 require("copilot").setup({
                     suggestion = { enabled = false },
                     panel = { enabled = false },
+                    copilot_node_command = vim.g.node_host_prog,
                 })
             end,
         },

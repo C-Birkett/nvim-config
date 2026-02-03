@@ -11,7 +11,7 @@ if globals.USE_COPILOT then
                         enabled = "terminal",
                     },
                 }
-                
+
                 -- Required for opts.events.reload
                 vim.o.autoread = true
             end

@@ -25,7 +25,7 @@ wk.add({
     { "<leader>g", group = "git" },
     { "<leader>gf", group = "file" },
     { "<leader>t", group = "toggle" },
-    { "<leader>c", group = "copilot" },
+    { "<leader>a", group = "ai" },
 })
 
 -- window navigation
@@ -86,30 +86,25 @@ vim.keymap.set('n', '<leader>gD', gitsigns.diffthis, { desc = "diff file" })
 -- toggle
 vim.keymap.set('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = "blame" })
 
--- copilot
+-- opencode
 if globals.USE_COPILOT then
-    -- Close and reopen neo tree to get it on rhs
-    local function is_neotree_open()
-        for _, win in ipairs(vim.api.nvim_list_wins()) do
-            local buf = vim.api.nvim_win_get_buf(win)
-            local name = vim.api.nvim_buf_get_name(buf)
-            if name:match("neo%-tree filesystem") then
-                return true
-            end
-        end
-        return false
-    end
-
-    local function open_copilot_chat()
-        local neotree_open = is_neotree_open()
-        vim.cmd("Neotree action=close source=filesystem position=right")
-        vim.cmd("AvanteChat")
-        if neotree_open then vim.cmd("Neotree action=show source=filesystem position=right") end
-    end
-
-    vim.keymap.set('n', '<leader>ct', function() vim.cmd("Copilot toggle") end, { desc = "toggle" })
-    vim.keymap.set('n', '<leader>cc', open_copilot_chat, { desc = "chat" })
-    vim.keymap.set('v', '<leader>cc', open_copilot_chat, { desc = "chat" })
-    vim.keymap.set('n', '<leader>cr', function() vim.cmd("CopilotChatReset") end, { desc = "reset" })
-    vim.keymap.set('n', '<leader>cs', function() vim.cmd("CopilotChatStop") end, { desc = "stop" })
+    vim.keymap.set({ "n", "x" }, "<leader>aa", function() 
+        require("opencode").ask("@this: ", { submit = true }) 
+    end, { desc = "ask" })
+    
+    vim.keymap.set({ "n", "x" }, "<leader>as", function() 
+        require("opencode").select() 
+    end, { desc = "select" })
+    
+    vim.keymap.set({ "n", "t" }, "<leader>at", function() 
+        require("opencode").toggle() 
+    end, { desc = "toggle" })
+    
+    vim.keymap.set("n", "<leader>au", function() 
+        require("opencode").command("session.half.page.up") 
+    end, { desc = "scroll up" })
+    
+    vim.keymap.set("n", "<leader>ad", function() 
+        require("opencode").command("session.half.page.down") 
+    end, { desc = "scroll down" })
 end

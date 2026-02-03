@@ -8,7 +8,7 @@ return {
                     theme = "nord",
                     icons_enabled = true,
                 },
-                extensions = {"neo-tree", "mason", "lazy", "avante"},
+                extensions = {"neo-tree", "mason", "lazy"},
                 -- fix bad diagnostics icons
                 sections = {
                     lualine_b = {
@@ -17,6 +17,16 @@ return {
                         {
                             "diagnostics",
                             symbols = { error = '', warn = '', info = 'ⓘ', hint = '💡︎' },
+                        }
+                    },
+                    lualine_y = {
+                        {
+                            "fileformat",
+                            symbols = {
+                                unix = "LF",
+                                dos = "CRLF",
+                                mac = "CR",
+                            }
                         }
                     }
                 }

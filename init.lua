@@ -3,8 +3,10 @@ local globals = require("globals")
 -- platform specific configs
 if globals.IS_WINDOWS then
     require("/platform/windows")
+    vim.opt.fileformats = "dos,unix"  -- Try CRLF first on Windows
 elseif globals.IS_LINUX then
     require("/platform/linux")
+    vim.opt.fileformats = "unix,dos"  -- Try LF first on Linux/Mac
 end
 
 -- options

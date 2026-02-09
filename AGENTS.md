@@ -83,7 +83,6 @@ C:\Users\conan.birkett\AppData\Local\nvim\
         ├── none_ls.lua        # Formatter/linter bridge (none-ls, formerly null-ls)
         ├── telescope.lua      # Fuzzy finder
         ├── treesitter.lua     # Syntax highlighting
-        ├── vimwiki.lua        # Personal wiki
         ├── visual.lua         # UI/theme (Nord theme, lualine, startify)
         └── which-key.lua      # Keybinding helper
 ```

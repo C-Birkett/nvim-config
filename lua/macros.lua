@@ -8,8 +8,6 @@ local globals = require("globals")
 
 -- Compile and open/run
 
---nnoremap <F6> :w % <Bar> ! ~/.config/nvim/plug-config/buildWikiPDF "%:p" <CR>
-
 -- split resizing
 --vim.keymap.set(<silent> <C-Left> :vertical resize -3<CR>
 --noremap <silent> <C-Right> :vertical resize +3<CR>
